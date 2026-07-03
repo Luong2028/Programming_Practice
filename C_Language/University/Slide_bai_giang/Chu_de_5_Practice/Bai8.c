@@ -1,65 +1,32 @@
 /*
-    Viết các hàm thực hiện các yêu cầu trên mảng 2 chiều:
-    - Nhập vào ma trận số thực gồm nxn phần tử (1 < n <10) dùng cấp phát động;
-    - In ra màn hình ma trận vừa nhập;
-    - Tính và in ra tổng các phần tử nằm trong tam giác trên đường chéo chính của ma trận;
-    - main() gọi các hàm trên để thực hiện kiểm tra kết quả.
+    Viết chương trình nhập vào một chuỗi, in ra chuỗi đã được chuẩn hóa (không có ký tự trắng ở đầu, cuối chuỗi, mỗi từ cách nhau 1 khoảng trắng)
+    - input:   dai   hoc  Nha Trang
+    - output: dai hoc Nha Trang
 */
 #include <stdio.h>
-#include <stdlib.h>
-// Ham nhap
-void Nhap(float **a, int n){
-    
-    int i, j;
-    for(i = 0; i < n; i++){
-        for(j = 0; j < n; j++){
-            printf("Nhap phan tu thu a[%d][%d]: ", i, j);
-            scanf("%f", &a[i][j]);
-        }
+#include <string.h>
+// Ham chuan hoa
+void ChuanHoa(char s[]){
+    while(s[0] == ' ') 
+        strcpy(s, s + 1);
+    while(strlen(s) > 0 && s[strlen(s)- 1] == ' ') 
+        s[strlen(s) - 1] = '\0';
+    int i = 0;
+    while(s[i] != '\0'){
+        if(s[i] == ' ' && s[i + 1] == ' ')
+            strcpy(&s[i], &s[i + 1]);
+        else
+            i++;
     }
-}
-// Ham xuat
-void Xuat(float **a, int n){
-    printf("Cac phan tu vua nhap la:\n");
-    int i, j;
-    for(i = 0; i < n; i++){
-        for(j = 0; j < n; j++){
-            printf("%.2f ", a[i][j]);
-        }
-        printf("\n");
-    }
-}
-// Ham tinh tong cac phan tu trong tam giac tren duong cheo chinh
-void Tong(float **a , int n){
-    int i, j;
-    float S = 0;
-    for(i = 0; i < n; i++){
-        for(j = 0; j < n; j ++){
-            if(i < j)
-                S += a[i][j];
-        }
-    }
-    printf("Tong cac phan tu trong tam giac nam tren duong cheo chinh: %.2f\n", S);
 }
 // Ham chuong trinh chinh
 int main(){
-    float **a;
-    int n;
-    do{
-        printf("Nhap ma tran so thuc gom nxn phan tu (1 < n < 10): ");
-        scanf("%d", &n);
-    }while(n <= 1 || n >= 10);
-    a = (float **) calloc(n, sizeof(float *));
-    int i, j;
-    for(i = 0; i < n; i++){
-        a[i] = (float *) calloc(n, sizeof(float));
-    }
-    // Goi ham nhap
-    Nhap(a, n);
-    // Goi ham xuat
-    Xuat(a, n);
-    // Goi ham tong
-    Tong(a, n);
-    free(a);
+    char s[50];
+    printf("Nhap chuoi ky tu: ");
+    fgets(s, sizeof(s), stdin);
+    s[strcspn(s, "\n")] = '\0';
+    // Goi ham chuan hoa
+    ChuanHoa(s);
+    printf("Chuoi da duoc chuan hoa: %s", s);
     return 0;
 }
