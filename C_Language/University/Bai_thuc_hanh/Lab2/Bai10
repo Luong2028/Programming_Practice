@@ -1,0 +1,12 @@
+/*
+Đầu tiên sai kiểu dữ liệu trả về của hàm Input phải là void và phải dùng con trỏ n để thay đổi và gán giá trị cho biến n vì hiện tại n chỉ mới 
+khai báo trong chương trình chính chưa gán giá trị nên hiện tại giá trị của n là giá trị rác và nếu không dùng biến con trỏ trong hàm Input thì
+khi gọi hàm trong chương trình chính n vẫn sẽ giữ nguyên giá trị rác ban đầu của nó.
+Hàm tìm max sai về thuật toán phải gán biến max cho phần tử chỉ số đầu tiên là 0 của mảng và vòng lặp phải bắt đầu chạy từ chỉ số là 1 và phải 
+có giá trị trả về cho hàm là return max.
+Hàm đếm sai kiểu dữ liệu trả về của hàm là void đổi thành int, và chưa khai báo 2 biến đó là x và c nếu chạy thì chương trình sẽ lỗi và chỉ số 
+của mảng là từ 0 đến n - 1 nên điều kiện dừng vòng lặp for trong hàm là i < n chứ không phải là i <= n.
+Trong chương trình chính thì chỗ khai báo mảng thiếu giới hạn số lượng phần tử của mảng sửa thành arr[N] và trong hàm printf của  tìm max thiếu
+đặc tả và biểu thức để in ra kết quả sửa lại thành printf("Gia tri lon nhat la %d", Max(a, n));, còn hàm printf cuối thì thiếu đặc tả sửa lại 
+thành printf("So phan tu co gia tri x trong mang la %d",  Count(a, n));. Ngoài ra để trình bày dễ nhìn hơn thì nên có kí tự '\n' cuối mỗi hàm in.
+*/
