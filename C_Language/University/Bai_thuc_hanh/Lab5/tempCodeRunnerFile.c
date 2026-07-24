@@ -1,1 +1,0 @@
-InThuTu(s);
